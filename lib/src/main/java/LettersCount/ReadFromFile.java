@@ -2,5 +2,6 @@ package LettersCount;
 
 public interface ReadFromFile {
 
-		public String getLineFromFile () throws Exception;
+		public int getLineFromFile (String file) throws Exception;
+
 }

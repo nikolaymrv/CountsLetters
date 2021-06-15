@@ -9,7 +9,7 @@ public class Library {
 		int cCounter = 0;
 		int countConsonants = 0;
 		int countVowels = 0;
-		String Exit = "Exit";
+		final String EXIT = "Exit";
 		String s = null;
 		
 		Consonantsimpl consonants = new Consonantsimpl();
@@ -25,19 +25,13 @@ public class Library {
 		 
 		 case (1):
 			 while (true) {
-//			        if (s.isEmpty()) {
-//			        	System.out.println("NullPointerException!");
-//						System.out.println("It's not a string! Enter string again...");
-//			        }
 				 lineConsoleStr.getLineFromConsole();
 				 s = lineConsoleStr.consoleLine;
-			        if (s.equals(Exit)) {
+			        if (s.equals(EXIT)) {
 			        	break;
 			        }     
 			        
-			       
-			        countConsonants = consonants.getNameLength(s);
-			               
+			        countConsonants = consonants.getNameLength(s);      
 			        countVowels = vowels.getNameLength(s);
 			        
 			        vCounter += countVowels;
@@ -47,24 +41,23 @@ public class Library {
 			        System.out.println("Vowels in array" + " " + countVowels);		
 			 }
 		 break;
-		 
+		//D:\Programs\Workspace\strings.txt
 		 case (2):
+			 
+		 	
+		 	 
 			 while (true) {
-				 lineFileStr.getLineFromFile();
-				 s = lineFileStr.fileLine;
-				 if (s.equals(Exit)) {
+				 System.out.println("Enter full path to file with the name of file (with .txt or other .type)");
+				 Scanner sc = new Scanner(System.in);
+				 s = sc.toString();
+				 
+				 if (s.equals(EXIT)) {
 			        	break;
 			        }
 				 
-				 countConsonants = consonants.getNameLength(s);
-	               
-			        countVowels = vowels.getNameLength(s);
+				 lineFileStr.getLineFromFile(s);
 			        
-			        vCounter += countVowels;
-			        cCounter += countConsonants;
-			        
-			        System.out.println("Consonants in array" + " " + countConsonants);
-			        System.out.println("Vowels in array" + " " + countVowels);		
+			        	
 			 }
 		 
 		 }
