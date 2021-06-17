@@ -6,11 +6,7 @@ import java.util.List;
 
 public class Vowelsimpl implements LettersCount{
 	List<Character> vowels = new ArrayList<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
-//		vowels.add('a');
-//		vowels.add('e');
-//		vowels.add('i');
-//		vowels.add('o');
-//		vowels.add('u');
+
 			
 
 	@Override

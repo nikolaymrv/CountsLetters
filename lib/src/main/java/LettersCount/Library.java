@@ -1,5 +1,7 @@
 package LettersCount;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Library {
@@ -21,24 +23,22 @@ public class Library {
 
 		Choice choice = new Choice();
 		int variants = choice.choice(scChoice);
+		List<Integer> countersList = new ArrayList<>();
 		 switch (variants) {
 		 
 		 case (1):
 			 while (true) {
-				 lineConsoleStr.getLineFromConsole();
-				 s = lineConsoleStr.consoleLine;
+				 System.out.println("Enter the string");
+				 Scanner sc = new Scanner (System.in);
+				 s = sc.nextLine();
 			        if (s.equals(EXIT)) {
 			        	break;
-			        }     
+			        }  
 			        
-			        countConsonants = consonants.getNameLength(s);      
-			        countVowels = vowels.getNameLength(s);
+			        countersList = lineConsoleStr.getLineFromConsole(s);
+			        vCounter += countersList.get(0);
+			        cCounter += countersList.get(1);
 			        
-			        vCounter += countVowels;
-			        cCounter += countConsonants;
-			        
-			        System.out.println("Consonants in array" + " " + countConsonants);
-			        System.out.println("Vowels in array" + " " + countVowels);		
 			 }
 		 break;
 		//D:\Programs\Workspace\strings.txt
@@ -49,22 +49,25 @@ public class Library {
 			 while (true) {
 				 System.out.println("Enter full path to file with the name of file (with .txt or other .type)");
 				 Scanner sc = new Scanner(System.in);
-				 s = sc.toString();
+				 s = sc.nextLine();
 				 
 				 if (s.equals(EXIT)) {
 			        	break;
 			        }
-				 
-				 lineFileStr.getLineFromFile(s);
-			        
-			        	
+				 else {
+				 	countersList =	 lineFileStr.getLineFromFile(s);
+				 	 vCounter += countersList.get(0);
+			        cCounter += countersList.get(1);
+			       
+				 }
 			 }
 		 
 		 }
 		 
-		
-		System.out.println("Consonants:" + " " + cCounter);
 		System.out.println("Vowels:" + " " + vCounter);
+		System.out.println("Consonants:" + " " + cCounter);
+		
+		
 		System.out.println("Goodbye");
 	}
 }

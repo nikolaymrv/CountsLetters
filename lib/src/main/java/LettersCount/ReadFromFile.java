@@ -1,7 +1,9 @@
 package LettersCount;
 
+import java.util.List;
+
 public interface ReadFromFile {
 
-		public int getLineFromFile (String file) throws Exception;
+		public List<Integer> getLineFromFile (String file) throws Exception;
 
 }

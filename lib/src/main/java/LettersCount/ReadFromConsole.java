@@ -1,6 +1,8 @@
 package LettersCount;
 
+import java.util.List;
+
 public interface ReadFromConsole {
 
-	public String getLineFromConsole ();
+	public List<Integer> getLineFromConsole (String s);
 }
