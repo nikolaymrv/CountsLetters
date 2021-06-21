@@ -6,20 +6,20 @@ import org.junit.Test;
 
 public class ConsonantsTest {
 
-	private Consonantsimpl consonantsTest;
+	private ConsonantsCounter consonantsTest;
 	
 	@Test
 	public void test() {
-		consonantsTest = new Consonantsimpl();
+		consonantsTest = new ConsonantsCounter();
 		String s = "Hello";
-		assertEquals(3, consonantsTest.getNameLength(s), 0);
+		assertEquals(3, consonantsTest.getLettersCount(s), 0);
 	}
 
 	@Test
 	public void test2() {
-		consonantsTest = new Consonantsimpl();
+		consonantsTest = new ConsonantsCounter();
 		String s = "eo";
-		assertEquals(0, consonantsTest.getNameLength(s), 0);
+		assertEquals(0, consonantsTest.getLettersCount(s), 0);
 	}
 	
 }

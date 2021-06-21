@@ -10,9 +10,12 @@ public class Choice {
 		boolean flag = true;
 		int variant = 0;
 		while (flag) {
-		System.out.println("Enter the varianf of type of input");
-		System.out.println("1 = Console");
-		System.out.println("2 = From file");
+		System.out.println("Enter the varianf of type of input:");
+		System.out.println("1 = Input in console.");
+		System.out.println("2 = Read from file.");
+		System.out.println("3 = Read from file, just Java 7 version.");
+		System.out.println("4 = Read from file, just Java 8 version.");
+		System.out.println("5 = Read from file, just Java 11 version.");
 		try {
 			List<Integer> paramList = new ArrayList<>();
 			String input = sc.next();
@@ -26,7 +29,7 @@ public class Choice {
 			} catch (NumberFormatException e) {
 				System.out.println("Please, enter again (incorrect data entered)");
 			System.out.println("Catch Exception:" + e.getMessage() + " " + e.toString());
-//			choice(sc);
+
 		}
 		
 }

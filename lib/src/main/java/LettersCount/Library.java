@@ -9,65 +9,126 @@ public class Library {
 		
 		int vCounter = 0;
 		int cCounter = 0;
-		int countConsonants = 0;
-		int countVowels = 0;
 		final String EXIT = "Exit";
-		String s = null;
 		
-		Consonantsimpl consonants = new Consonantsimpl();
-		Vowelsimpl vowels = new Vowelsimpl();
-		StrFromFile lineFileStr = new StrFromFile();
-		StrFromConsole lineConsoleStr = new StrFromConsole();
+		String lineToBeProcessed = null;
+		
+		LineFromFileCommon lineFromFile = new LineFromFileCommon();
+		LineFromFileJava7 lineFromFileJava7 = new LineFromFileJava7();
+		LineFromFileJava8 lineFromFileJava8 = new LineFromFileJava8();
+		LineFromFileJava11 lineFromFileJava11 = new LineFromFileJava11();
+		LineFromConsole lineFromConsole = new LineFromConsole();
 		
 		Scanner scChoice = new Scanner(System.in);
 
 		Choice choice = new Choice();
 		int variants = choice.choice(scChoice);
-		List<Integer> countersList = new ArrayList<>();
+		
+		List<Integer> counterList = new ArrayList<>();
 		 switch (variants) {
 		 
 		 case (1):
 			 while (true) {
 				 System.out.println("Enter the string");
 				 Scanner sc = new Scanner (System.in);
-				 s = sc.nextLine();
-			        if (s.equals(EXIT)) {
+				 lineToBeProcessed = sc.nextLine();
+			        if (lineToBeProcessed.equals(EXIT)) {
 			        	break;
 			        }  
 			        
-			        countersList = lineConsoleStr.getLineFromConsole(s);
-			        vCounter += countersList.get(0);
-			        cCounter += countersList.get(1);
+			        counterList = lineFromConsole.processLineFrom(lineToBeProcessed);
+			        vCounter += counterList.get(0);
+			        cCounter += counterList.get(1);
 			        
 			 }
 		 break;
-		//D:\Programs\Workspace\strings.txt
+		 
 		 case (2):
 			 
-		 	
-		 	 
 			 while (true) {
 				 System.out.println("Enter full path to file with the name of file (with .txt or other .type)");
-				 Scanner sc = new Scanner(System.in);
-				 s = sc.nextLine();
 				 
-				 if (s.equals(EXIT)) {
+				 Scanner sc = new Scanner(System.in);
+				 lineToBeProcessed = sc.nextLine();
+				 
+				 if (lineToBeProcessed.equals(EXIT)) {
 			        	break;
-			        }
+			     }
+				 
 				 else {
-				 	countersList =	 lineFileStr.getLineFromFile(s);
-				 	 vCounter += countersList.get(0);
-			        cCounter += countersList.get(1);
+				 	counterList = lineFromFile.processLineFrom(lineToBeProcessed);
+				 	 vCounter += counterList.get(0);
+			        cCounter += counterList.get(1);
 			       
 				 }
 			 }
 		 
+		 break;
+		 //Java7
+		 case (3):
+			 //D:\Programs\Workspace\NameLength\lib\src\main\text.txt
+			 while (true) {
+				 System.out.println("Enter full path to file with the name of file (with .txt or other .type)");
+				 
+				 Scanner sc = new Scanner(System.in);
+				 lineToBeProcessed = sc.nextLine();
+				 
+				 if (lineToBeProcessed.equals(EXIT)) {
+			        	break;
+			     }
+				 
+				 else {
+				 	counterList = lineFromFileJava7.processLineFrom(lineToBeProcessed);
+				 	 vCounter += counterList.get(0);
+			        cCounter += counterList.get(1);
+			 }
 		 }
 		 
+		 break;
+		 //Java 8
+		 case (4):
+			 //D:\Programs\Workspace\NameLength\lib\src\main\text.txt
+			 while (true) {
+				 System.out.println("Enter full path to file with the name of file (with .txt or other .type)");
+				 
+				 Scanner sc = new Scanner(System.in);
+				 lineToBeProcessed = sc.nextLine();
+				 
+				 if (lineToBeProcessed.equals(EXIT)) {
+			        	break;
+			     }
+				 
+				 else {
+				 	counterList = lineFromFileJava8.processLineFrom(lineToBeProcessed);
+				 	 vCounter += counterList.get(0);
+			        cCounter += counterList.get(1);
+			 }
+			 
+		 }
+		break;
+		
+		 case (5):
+			 
+			 while (true) {
+				 System.out.println("Enter full path to file with the name of file (with .txt or other .type)");
+				 
+				 Scanner sc = new Scanner(System.in);
+				 lineToBeProcessed = sc.nextLine();
+				 
+				 if (lineToBeProcessed.equals(EXIT)) {
+			        	break;
+			     }
+				 
+				 else {
+				 	counterList = lineFromFileJava8.processLineFrom(lineToBeProcessed);
+				 	 vCounter += counterList.get(0);
+			        cCounter += counterList.get(1);
+			 }
+			 }
+	}
 		System.out.println("Vowels:" + " " + vCounter);
 		System.out.println("Consonants:" + " " + cCounter);
-		
-		
 		System.out.println("Goodbye");
+		//D:\Programs\Workspace\NameLength\lib\src\main\text.txt
 	}
 }
