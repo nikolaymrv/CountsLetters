@@ -16,7 +16,7 @@ public class Library {
 		LineFromFileCommon lineFromFile = new LineFromFileCommon();
 		LineFromFileJava7 lineFromFileJava7 = new LineFromFileJava7();
 		LineFromFileJava8 lineFromFileJava8 = new LineFromFileJava8();
-		LineFromFileJava11 lineFromFileJava11 = new LineFromFileJava11();
+		LineFromFileJava82 lineFromFileJava11 = new LineFromFileJava82();
 		LineFromConsole lineFromConsole = new LineFromConsole();
 		
 		Scanner scChoice = new Scanner(System.in);
