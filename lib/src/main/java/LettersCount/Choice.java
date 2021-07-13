@@ -16,14 +16,15 @@ public class Choice {
 		System.out.println("3 = Read from file, just Java 7 version.");
 		System.out.println("4 = Read from file, just Java 8 version.");
 		System.out.println("5 = Read from file, just Java 11 version.");
+		System.out.println("6 = Read from DataBase");
 		try {
-			List<Integer> paramList = new ArrayList<>();
+			List<Integer> variantList = new ArrayList<>();
 			String input = sc.next();
 			variant = Integer.parseInt(input);
 			
 			
 			flag = false;
-			paramList.add(variant);
+			variantList.add(variant);
 			break;
 			
 			} catch (NumberFormatException e) {

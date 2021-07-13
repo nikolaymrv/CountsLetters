@@ -18,13 +18,13 @@ public class LineFromFileCommon implements LineProcessor {
 		
 		List<Integer> letterCount = new ArrayList<>();		
 		
-		FileReader fr = new FileReader(input);
-		Scanner scFr = new Scanner(fr);
+		FileReader fileReader = new FileReader(input);
+		Scanner scannerFileReader = new Scanner(fileReader);
 		String lineFromFile = null;
 		int i = 1;
 		
-		while (scFr.hasNextLine()) {
-			lineFromFile = scFr.nextLine();
+		while (scannerFileReader.hasNextLine()) {
+			lineFromFile = scannerFileReader.nextLine();
 			System.out.println("Line" + " " + i + " " + ":" + lineFromFile);
 			
 				countVowels = vowelsCounter.getLettersCount(lineFromFile);
