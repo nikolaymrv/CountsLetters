@@ -32,6 +32,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-	<classpathentry kind="lib" path="C:/Users/User/Desktop/jar_files/mysql-connector-java-8.0.17.jar"/>
+	<classpathentry kind="lib" path="D:/Programs/Programming/Workspace/NameLength/mysql-connector-java-8.0.17.jar"/>
+	<classpathentry kind="lib" path="D:/Personal/Temp/mockito-all-2.0.2-beta.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

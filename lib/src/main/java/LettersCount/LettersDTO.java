@@ -1,17 +1,23 @@
 package LettersCount;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LettersDTO {
 	
 	private int vowelsCountInLine;
 	private int consonantsCountInLine;
-	public String readedLine;
-	public Timestamp timestamp;
-	public String typeOfInput;
+	private String readedLine;
+	private Timestamp timestamp;
+	private String typeOfInput;
 	
+	public String getReadedLine() {
+        return readedLine;
+    }
+    public void setReadedLine(String readedLine) {
+        this.readedLine = readedLine;
+    }
+    
+    
 	public int getVowelsCountInLine() {
         return vowelsCountInLine;
     }
@@ -25,14 +31,6 @@ public class LettersDTO {
     }
     public void setConsonantsCountInLine(int consonantsCountInLine) {
         this.consonantsCountInLine = consonantsCountInLine;
-    }
-    
-    
-	public String getReadedLine() {
-        return readedLine;
-    }
-    public void setReadedLine(String readedLine) {
-        this.readedLine = readedLine;
     }
     
     
@@ -51,6 +49,21 @@ public class LettersDTO {
         this.typeOfInput = typeOfInput;
     }
     
-    
+    public String toString() {
+    	
+    	StringBuffer toStringDTO = new StringBuffer();
+    	toStringDTO.append(readedLine);
+    	toStringDTO.append("\n");
+    	toStringDTO.append(vowelsCountInLine);
+    	toStringDTO.append("\n");
+    	toStringDTO.append(consonantsCountInLine);
+    	toStringDTO.append("\n");
+    	toStringDTO.append(timestamp);
+    	toStringDTO.append("\n");
+    	toStringDTO.append(typeOfInput);
+    	
+		return toStringDTO.toString();
+    	
+    }
     
 }

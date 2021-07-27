@@ -20,8 +20,8 @@ public class WriteLineInBD implements DBLineProcessor {
 				// Statements allow to issue SQL queries to the database
 				statement = connection.createStatement();
 				// Result set get the result of the SQL query
-				int result = statement.executeUpdate("INSERT INTO variables_for_work VALUES ('"+input+"')");
-				System.out.printf("Added %d rows", result);
+				int result = statement.executeUpdate("INSERT INTO lines_for_analysis VALUES ('"+input+"')");
+				System.out.println("Added"+" " + result + " " + "rows");
 			}
 		
 		

@@ -21,7 +21,7 @@ public class DBLineLettersCount {
 		int iterator = 0;
 		int listIterator = 0;
 		while (resultSet.next()) {
-			String line = resultSet.getString("LineOne");
+			String line = resultSet.getString("lines");
 			List<String> linesFromSQL = new ArrayList<>();
 			linesFromSQL.add(line);
 			System.out.println("Line from list" + ++iterator + ": " + linesFromSQL.get(listIterator));

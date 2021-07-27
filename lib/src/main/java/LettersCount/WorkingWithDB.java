@@ -28,7 +28,7 @@ public class WorkingWithDB implements LineProcessor{
 			// Statements allow to issue SQL queries to the database
 			statement = connection.createStatement();
 			// Result set get the result of the SQL query
-			resultSet = statement.executeQuery("select * from count_letters_database.variables_for_work");
+			resultSet = statement.executeQuery("select * from count_letters_database.lines_for_analysis");
 			counterList = writeResultSet.dbLineLettersCount(resultSet);
 		}
 		return counterList;

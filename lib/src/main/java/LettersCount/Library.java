@@ -17,7 +17,7 @@ public class Library {
 		final String EXIT = "Exit";
 		final String NO = "No";
 		final String YES = "Yes";
-
+		final String CONSOLE_TYPE = "Console";
 		String lineToBeProcessed = null;
 
 		LineFromFileCommon lineFromFile = new LineFromFileCommon();
@@ -27,6 +27,7 @@ public class Library {
 		LineFromConsole lineFromConsole = new LineFromConsole();
 		WorkingWithDB JDBCgetLine = new WorkingWithDB();
 		WriteLineInBD writeLineInBD = new WriteLineInBD();
+		MongoDBProcessor mongoDBProcessor = new MongoDBProcessor();
 
 		Scanner scannerChoice = new Scanner(System.in);
 
@@ -44,7 +45,7 @@ public class Library {
 				Scanner scannerLineFromConsole = new Scanner(System.in);
 				lineToBeProcessed = scannerLineFromConsole.nextLine();
 				
-				System.out.println("You wanna write this line in DB?");
+				System.out.println("You wanna write this line in DB? (Yes or No)");
 				Scanner scannerLineFromDatabase = new Scanner(System.in);
 				String choiceDB = scannerLineFromDatabase.nextLine();
 				
@@ -53,8 +54,21 @@ public class Library {
 					if (lineToBeProcessed.equals(EXIT)) {
 						break;
 					}
+					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 					
 					counterList = lineFromConsole.processLineFrom(lineToBeProcessed);
+					
+					LettersDTO lettersDTO = new LettersDTO();
+					lettersDTO.setVowelsCountInLine(counterList.get(0));
+					lettersDTO.setConsonantsCountInLine(counterList.get(1));
+					lettersDTO.setReadedLine(lineToBeProcessed);
+					lettersDTO.setTimestamp(timestamp);
+					lettersDTO.setTypeOfInput(CONSOLE_TYPE);
+					
+					
+					
+					lineParameters.add(lettersDTO);
+					mongoDBProcessor.mongoDBConnection(lettersDTO);
 					vCounter += counterList.get(0);
 					cCounter += counterList.get(1);
 				}
@@ -64,9 +78,9 @@ public class Library {
 					break;
 				}
 				Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-				final String CONSOLE_TYPE = "Console";
 				
 				counterList = lineFromConsole.processLineFrom(lineToBeProcessed);
+				
 				LettersDTO lettersDTO = new LettersDTO();
 				lettersDTO.setVowelsCountInLine(counterList.get(0));
 				lettersDTO.setConsonantsCountInLine(counterList.get(1));
@@ -75,6 +89,9 @@ public class Library {
 				lettersDTO.setTypeOfInput(CONSOLE_TYPE);
 				
 				lineParameters.add(lettersDTO);
+				
+				
+				mongoDBProcessor.mongoDBConnection(lettersDTO);
 				
 				vCounter += counterList.get(0);
 				cCounter += counterList.get(1);
@@ -96,6 +113,7 @@ public class Library {
 
 				else {
 					counterList = lineFromFile.processLineFrom(lineToBeProcessed);
+
 					vCounter += counterList.get(0);
 					cCounter += counterList.get(1);
 
@@ -118,6 +136,7 @@ public class Library {
 
 				else {
 					counterList = lineFromFileJava7.processLineFrom(lineToBeProcessed);
+					
 					vCounter += counterList.get(0);
 					cCounter += counterList.get(1);
 				}
@@ -139,6 +158,7 @@ public class Library {
 
 				else {
 					counterList = lineFromFileJava8.processLineFrom(lineToBeProcessed);
+					
 					vCounter += counterList.get(0);
 					cCounter += counterList.get(1);
 				}
@@ -160,6 +180,10 @@ public class Library {
 
 				else {
 					counterList = lineFromFileJava82.processLineFrom(lineToBeProcessed);
+					
+					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+					final String FROM_FILE_TYPE = "From file";
+					
 					vCounter += counterList.get(0);
 					cCounter += counterList.get(1);
 				}
@@ -179,15 +203,21 @@ public class Library {
 
 				else {
 					counterList = JDBCgetLine.processLineFrom(null);
+					
 					vCounter += counterList.get(0);
 					cCounter += counterList.get(1);
 				}
 			}
 
 		}
+		
+		for (int i=0; i<lineParameters.size(); i++) {
+			System.out.println(lineParameters.get(i));
+		}
+		
 		System.out.println("Vowels:" + " " + vCounter);
 		System.out.println("Consonants:" + " " + cCounter);
 		System.out.println("Goodbye");
-		// D:\Programs\Workspace\NameLength\lib\src\main\text.txt
+		// D:\Programs\Programming\Workspace\NameLength\lib\src\main\text.txt
 	}
 }
