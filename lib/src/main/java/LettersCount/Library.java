@@ -209,6 +209,8 @@ public class Library {
 				}
 			}
 
+		case (7):
+			mongoDBProcessor.mongoDBReading();
 		}
 		
 		for (int i=0; i<lineParameters.size(); i++) {

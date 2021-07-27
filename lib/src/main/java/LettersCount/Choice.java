@@ -17,6 +17,7 @@ public class Choice {
 		System.out.println("4 = Read from file, just Java 8 version.");
 		System.out.println("5 = Read from file, just Java 11 version.");
 		System.out.println("6 = Read from DataBase");
+		System.out.println("7 = Read a document from MongoDB");
 		try {
 			List<Integer> variantList = new ArrayList<>();
 			String input = sc.next();

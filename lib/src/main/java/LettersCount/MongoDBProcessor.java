@@ -22,4 +22,14 @@ public class MongoDBProcessor {
 		}
 
 }
+	public void mongoDBReading() {
+		BasicConfigurator.configure();
+		try (var mongoClient = MongoClients.create()){
+			var database = mongoClient.getDatabase("lines_analysis");
+		    var todoCollection = database.getCollection("line_parameters");
+		    Document myDoc = todoCollection.find().first();
+		    System.out.println(myDoc.toJson());
+		}
+	}
+	
 }

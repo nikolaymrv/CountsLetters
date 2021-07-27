@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.Test;
+import org.mockito.ArgumentMatchers;
 
 public class MongoDBProcessorTest {
 
@@ -37,7 +38,7 @@ public class MongoDBProcessorTest {
 		lettersDTO.setTypeOfInput(CONSOLE_TYPE);
 		
 		MongoDBProcessor mongoDBConnectionTEST = new MongoDBProcessor();
-		doNothing().when(mongoDBConnectionTEST).mongoDBConnection(lettersDTO);
+		doNothing().when(mongoDBConnectionTEST).mongoDBConnection(ArgumentMatchers.any());
 		mongoDBConnectionTEST.mongoDBConnection(lettersDTO);
 	}
 
