@@ -21,22 +21,21 @@ public class LineFromFileJava82 extends LineFromFileCommon {
 		List<Integer> letterCount = new ArrayList<>();
 
 		try (Stream<String> streamFromFiles = Files.lines(Paths.get(input));) {
-			
-		 
+
 			streamFromFiles.forEach(line -> {
 				vowelsCounter.getLettersCount(line);
 				consonantsCounter.getLettersCount(line);
 				Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 				final String FROM_FILE_TYPE = "From file";
-				
-				 LettersDTO lettersDTO = new LettersDTO();
-					lettersDTO.setVowelsCountInLine(vCounter);
-					lettersDTO.setConsonantsCountInLine(cCounter);
-					lettersDTO.setReadedLine(line);
-					lettersDTO.setTimestamp(timestamp);
-					lettersDTO.setTypeOfInput(FROM_FILE_TYPE);
-					
-					mongoDBProcessor.mongoDBConnection(lettersDTO);
+
+				LettersDTO lettersDTO = new LettersDTO();
+				lettersDTO.setVowelsCountInLine(vCounter);
+				lettersDTO.setConsonantsCountInLine(cCounter);
+				lettersDTO.setReadedLine(line);
+				lettersDTO.setTimestamp(timestamp);
+				lettersDTO.setTypeOfInput(FROM_FILE_TYPE);
+
+				mongoDBProcessor.mongoDBConnection(lettersDTO);
 			});
 		}
 		letterCount.add(vCounter); // 0

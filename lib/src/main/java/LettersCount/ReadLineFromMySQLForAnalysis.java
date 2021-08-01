@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkingWithDB implements LineProcessor{
+public class ReadLineFromMySQLForAnalysis implements LineProcessor {
 
 	@Override
 	public List<Integer> processLineFrom(String input) throws Exception {

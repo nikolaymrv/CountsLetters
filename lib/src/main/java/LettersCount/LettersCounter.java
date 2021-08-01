@@ -2,5 +2,5 @@ package LettersCount;
 
 public interface LettersCounter {
 
-		int getLettersCount(String s);
+	int getLettersCount(String s);
 }
