@@ -9,14 +9,11 @@ import java.util.List;
 import org.junit.AfterClass;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
+import org.mockito.Mockito;
 
 public class MongoDBProcessorTest {
 
-	final String CONSOLE_TYPE = "Console";	
-	
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	final String CONSOLE_TYPE = "Console";
 
 	@Test
 	public void test() {
@@ -26,7 +23,8 @@ public class MongoDBProcessorTest {
 		int vowels = 2;
 		int consonants = 3;
 		
-		counterList.add(vowels, consonants);
+		counterList.add(vowels);
+		counterList.add(consonants);
 		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		
@@ -37,7 +35,7 @@ public class MongoDBProcessorTest {
 		lettersDTO.setTimestamp(timestamp);
 		lettersDTO.setTypeOfInput(CONSOLE_TYPE);
 		
-		MongoDBProcessor mongoDBConnectionTEST = new MongoDBProcessor();
+		MongoDBProcessor mongoDBConnectionTEST = Mockito.mock(MongoDBProcessor.class);
 		doNothing().when(mongoDBConnectionTEST).mongoDBConnection(ArgumentMatchers.any());
 		mongoDBConnectionTEST.mongoDBConnection(lettersDTO);
 	}

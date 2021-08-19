@@ -26,7 +26,7 @@ public class Library {
 		LineFromConsole lineFromConsole = new LineFromConsole();
 		ReadLineFromMySQLForAnalysis JDBCgetLine = new ReadLineFromMySQLForAnalysis();
 		WriteLineInBD writeLineInBD = new WriteLineInBD();
-		MongoDBProcessor mongoDBProcessor = new MongoDBProcessor();
+		MongoDBConnectionSingleton mongoConnSingle = new MongoDBConnectionSingleton();
 
 		Scanner scannerChoice = new Scanner(System.in);
 
@@ -64,7 +64,7 @@ public class Library {
 					lettersDTO.setTypeOfInput(CONSOLE_TYPE);
 
 					lineParameters.add(lettersDTO);
-					mongoDBProcessor.mongoDBConnection(lettersDTO);
+					mongoConnSingle.insertUser(lettersDTO);					
 					vCounter += counterList.get(0);
 					cCounter += counterList.get(1);
 				}
@@ -86,7 +86,7 @@ public class Library {
 
 					lineParameters.add(lettersDTO);
 
-					mongoDBProcessor.mongoDBConnection(lettersDTO);
+					mongoConnSingle.insertUser(lettersDTO);
 
 					vCounter += counterList.get(0);
 					cCounter += counterList.get(1);
@@ -205,7 +205,7 @@ public class Library {
 			}
 
 		case (7):
-			mongoDBProcessor.mongoDBReading();
+			mongoConnSingle.queryUsers();;
 		}
 
 		for (int i = 0; i < lineParameters.size(); i++) {
